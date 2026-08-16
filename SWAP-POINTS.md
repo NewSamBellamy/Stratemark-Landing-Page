@@ -10,14 +10,14 @@ Search the site for `REPLACE-ME` and yellow placeholder chips on legal pages.
 2. **Demo URL** (optional)  
    Hero “Try the demo” may point at a hosted demo. Default ships with `demo.html` in this folder and/or a Hyperagent-hosted demo URL embedded during build — confirm which URL should ship.
 
-3. **Paddle checkout URL**  
-   Easy-install primary button currently may point at GitHub releases. Swap to Paddle checkout when live.
+3. **Lemon Squeezy checkout URL**  
+   Easy-install primary button currently points at GitHub releases placeholder. Swap to Lemon Squeezy checkout URL / overlay once store is approved.
 
 4. **Square Peg NG legal details** (privacy / terms / refunds / contact)  
-   - Exact legal name (match Paddle + CAC)  
+   - Exact legal name (match Lemon Squeezy + CAC)  
    - Support email  
    - Support phone  
-   - Registered address  
+   - Registered address in Nigeria  
    - RC / tax IDs if any  
 
 5. **og:image** (nice-to-have)  
