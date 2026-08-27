@@ -31,9 +31,25 @@ placeholder chips on legal pages.
    The visible "Awaiting Tobi / Square Peg NG" banners on those pages are
    intentional draft notices — remove them together with the last chip.
 
-5. **og:image — DONE (27 Aug)**
-   `img/og-share.png` (1200×630) created and wired into `index.html`
-   (og:image + twitter:card). Favicon remains the inline brand-mark data URI.
+5. **og:image — ASSET READY, AWAITING BINARY PUSH (27 Aug)**
+   The 1200×630 share card has been designed (brand-consistent: ink
+   background, dot-grid, teal mark motif, headline + subline + wordmark) and
+   is ready as `og-share.png`. It could not be committed via the agent's
+   text-only GitHub API (binary bytes get re-encoded and corrupted — a test
+   push was verified corrupt and removed again in `73ac284`).
+   **To finish:** drop the delivered `og-share.png` into `img/` (GitHub web
+   UI upload or `git add img/og-share.png`), then add to `index.html`
+   `<head>` right after the `og:type` line:
+   ```html
+   <meta property="og:url" content="https://getstratemark.com/" />
+   <meta property="og:image" content="https://getstratemark.com/img/og-share.png" />
+   <meta property="og:image:width" content="1200" />
+   <meta property="og:image:height" content="630" />
+   <meta name="twitter:card" content="summary_large_image" />
+   <meta name="twitter:image" content="https://getstratemark.com/img/og-share.png" />
+   ```
+   These lines do not touch the inline script/style blocks, so the CSP
+   hashes in `netlify.toml` stay valid.
 
 ## Do not
 
@@ -60,3 +76,5 @@ placeholder chips on legal pages.
 - `BACKEND-HANDOFF.md` added at repo root: everything the backend developer
   needs to wire Google Cloud (Firebase Auth/Hosting, Cloud Run Sentinel,
   Firestore, Lemon Squeezy entitlements).
+- og:image asset designed and delivered as a file handoff (item 5 above —
+  needs a normal binary git push, then two lines of meta).

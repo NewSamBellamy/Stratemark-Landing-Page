@@ -47,8 +47,12 @@ project. Last updated: 2026-08-27.
      `/SWAP-POINTS.md`, `/firebase.json`, `/.21st/*`, `/docs/*` — these were
      publicly served before.
 2. **`robots.txt` + `sitemap.xml` + `404.html`** added.
-3. **og:image** share card created (`img/og-share.png`, 1200×630) and wired
-   into `index.html` meta (og:image, twitter:card).
+3. **og:image** share card (1200×630, brand-consistent) designed and handed
+   off as the `og-share.png` file — it needs a normal binary git push into
+   `img/` (the agent's text-only GitHub API corrupts binary bytes; a test
+   push was verified corrupt and removed). `docs/internal/SWAP-POINTS.md`
+   item 5 has the exact meta lines to add to `index.html` once the file is
+   in place — they don't touch the inline blocks, so CSP hashes stay valid.
 4. Internal docs moved to `docs/internal/` and blocked from serving (see 1).
 
 ## Your wiring checklist (in order, from Maruf's CTO handover)
