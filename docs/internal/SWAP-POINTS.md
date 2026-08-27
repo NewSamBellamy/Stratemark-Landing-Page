@@ -19,7 +19,7 @@ placeholder chips on legal pages.
    Easy-install primary button currently points at the GitHub releases
    placeholder. Swap to the Lemon Squeezy checkout URL / overlay once the
    store is approved (Tobi owns the store; Maruf wires the entitlement
-   webhook — see `BACKEND-HANDOFF.md`).
+   webhook — see `docs/internal/BACKEND-HANDOFF.md`).
 
 4. **Square Peg NG legal details — OPEN**
    Yellow chips (`class="ph"`) on privacy / terms / refunds / contact pages:
@@ -73,7 +73,7 @@ placeholder chips on legal pages.
 - `netlify.toml` added: CSP with inline hashes, security headers,
   `index-enhanced.html` retired via redirect, robots.txt / sitemap.xml /
   404.html added.
-- `BACKEND-HANDOFF.md` added at repo root: everything the backend developer
+- `BACKEND-HANDOFF.md` added in `docs/internal/` (blocked from serving): everything the backend developer
   needs to wire Google Cloud (Firebase Auth/Hosting, Cloud Run Sentinel,
   Firestore, Lemon Squeezy entitlements).
 - og:image asset designed and delivered as a file handoff (item 5 above —
