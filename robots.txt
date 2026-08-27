@@ -1,0 +1,7 @@
+# getstratemark.com
+User-agent: *
+Allow: /
+Disallow: /.21st/
+Disallow: /docs/
+
+Sitemap: https://getstratemark.com/sitemap.xml
