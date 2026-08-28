@@ -104,6 +104,7 @@ Review this branch as a flow prototype, not a redesign brief.
 - Keep the free trial framed as one complete market search.
 - Do not reintroduce separate example or sample-deck CTAs.
 - The grey buttons are deliberately disabled handoff states, not final styling decisions.
+- Treat `docs/internal/METRIC-AUDIT.md` as the source of truth for every company number shown on this landing prototype; do not replace honest unknowns with visual filler.
 
 ## Production gate
 
