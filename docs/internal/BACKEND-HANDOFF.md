@@ -94,15 +94,19 @@ project. Last updated: 2026-08-27.
 
 ## Decisions you're inheriting (don't re-litigate without Shannon)
 
-- The landing pricing intentionally shows **Free + Easy install only** and says
-  "Nothing here is a subscription." The in-app pricing shows all three doors
-  (Free / subscriptions $19/$49/$99 / easy install). Tobi's handover flagged
-  that the site should eventually match the app — that is a **copy decision
-  for Shannon**, not a backend task.
-- BYOK engine stays client-side forever. The Gemini key is never server-side,
-  never in env.
-- Max tier economics ($99 for 150 decks) is margin-negative at Gemini list
-  prices — fair-use cap vs reprice is Shannon + Tobi's call.
+- **Aug 27 funnel directive supersedes the old two-card landing decision.** The
+  production prototype now has two top-level actions (`Try Now` and `Download`)
+  plus three product paths (open source, one-time easy install, managed
+  subscription). `Try Now` is one real market search on the visitor's chosen
+  market — no sample-deck gallery. Full contract and destination map:
+  `docs/internal/FUNNEL-HANDOFF.md`.
+- BYOK engine stays client-side forever. The Gemini key is never synced or
+  logged. The managed subscription may instead use Stratemark's server-side
+  Vertex/service credentials; the visitor never handles those credentials.
+- Prototype pricing follows the newest pricing model: one-time slider defaults
+  to $29; Starter $19 / 12 decks, Pro $49 / 35 decks, Max $99 / 70 decks.
+  Reconcile the product app's older $10 and 10/40/150 copy before checkout goes
+  live.
 
 ## Known watch-outs
 
@@ -112,10 +116,11 @@ project. Last updated: 2026-08-27.
   Rebuilding `demo.html` from the monorepo **will** change both hashes.
 - **Bundle size:** main chunk ~1.26 MB (375 KB gzip) in the monorepo build;
   route-level code splitting is the fix if it matters.
-- **`squarepegng/stratemark`** (public GitHub repo the landing links to,
-  incl. the pricing "Get easy install" button → `/releases`) has **no releases
-  yet**. That CTA currently lands on an empty releases page. Tobi's store ids
-  + your license gating close this loop; until then it is a soft dead end.
+- **Canonical GitHub destination is unresolved.** The production prototype no
+  longer links to stale `squarepegng/stratemark`; its repository control is
+  disabled until Shannon chooses Maruf's or Tobi's account and the product repo
+  is imported there. Coordinate the app, submission doc, and landing cutover so
+  no surface points to a different repository.
 - **Legal pages are launch drafts**: yellow placeholder chips on
   privacy/terms/refunds/contact await Square Peg NG's exact legal name,
   support email/phone, and registered address. Content task, tracked in

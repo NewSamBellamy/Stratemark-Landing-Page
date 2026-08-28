@@ -195,24 +195,24 @@ table{border-collapse:collapse}
 .hero-actions{display:flex;flex-wrap:wrap;gap:var(--s3);justify-content:center;margin-top:var(--s8)}
 .hero-note{margin-top:var(--s4);font-size:var(--t-sm);color:#93A09C}
 
-/* hero demo: question → research → deck, in one product window */
+/* hero product preview: question → research → deck, in one product window */
 .stage{position:relative;margin-top:clamp(44px,5vw,72px);padding-bottom:var(--s12);text-align:left}
-.demo{
+.product-preview{
   position:relative;z-index:1;background:var(--bg);color:var(--content);
   border:1px solid rgba(255,255,255,.14);border-radius:var(--r-xl);
   box-shadow:0 2px 8px rgba(0,0,0,.25), 0 60px 110px -50px rgba(0,0,0,.7);
   overflow:hidden;display:flex;flex-direction:column;
 }
-.demo-head{
+.product-preview-head{
   display:flex;align-items:center;justify-content:space-between;gap:var(--s4);
   padding:12px 20px;border-bottom:1px solid var(--border);background:var(--surface);
 }
-.demo-head .brand-mini{display:flex;align-items:center;gap:8px;font-family:Parkinsans,sans-serif;font-weight:600;font-size:13px}
-.demo-head .brand-mini svg{width:16px;height:16px}
-.demo-body{flex:1;padding:24px;max-width:820px;width:100%;margin-inline:auto;display:flex;flex-direction:column;gap:16px}
-.demo .q{align-self:flex-end;max-width:88%;text-align:right}
-.demo .q .t{font-size:11px;color:var(--muted);margin-bottom:4px}
-.demo .q .bub{display:inline-block;background:rgba(23,26,25,.05);padding:10px 16px;border-radius:16px 16px 6px 16px;font-size:14px;text-align:left}
+.product-preview-head .brand-mini{display:flex;align-items:center;gap:8px;font-family:Parkinsans,sans-serif;font-weight:600;font-size:13px}
+.product-preview-head .brand-mini svg{width:16px;height:16px}
+.product-preview-body{flex:1;padding:24px;max-width:820px;width:100%;margin-inline:auto;display:flex;flex-direction:column;gap:16px}
+.product-preview .q{align-self:flex-end;max-width:88%;text-align:right}
+.product-preview .q .t{font-size:11px;color:var(--muted);margin-bottom:4px}
+.product-preview .q .bub{display:inline-block;background:rgba(23,26,25,.05);padding:10px 16px;border-radius:16px 16px 6px 16px;font-size:14px;text-align:left}
 /* research card with the product's glow border */
 .research{position:relative;isolation:isolate;border-radius:12px;overflow:hidden;padding:16px;background:var(--surface)}
 .research.glow::before{
@@ -232,10 +232,10 @@ table{border-collapse:collapse}
 .research .steps .row{display:flex;align-items:center;gap:7px;padding:2px 0}
 .research .steps svg{width:12px;height:12px;color:var(--positive-text);flex:none}
 /* the resulting deck, populating */
-.demo-deck{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.product-preview-deck{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
 .js .dpop{opacity:0;transform:translateY(10px) scale(.985)}
 .js .dpop.in{opacity:1;transform:none;transition:opacity .5s var(--ease),transform .5s var(--ease)}
-.demo-foot{padding:14px 24px 18px;background:linear-gradient(transparent,var(--bg) 40%)}
+.product-preview-foot{padding:14px 24px 18px;background:linear-gradient(transparent,var(--bg) 40%)}
 .pill{
   max-width:820px;margin-inline:auto;background:var(--surface);border:1px solid var(--border);
   border-radius:16px;padding:12px;box-shadow:var(--sh-sm);
@@ -243,9 +243,9 @@ table{border-collapse:collapse}
 .pill .ph{font-size:15px;color:var(--muted)}
 .pill .bar{display:flex;align-items:center;justify-content:space-between;margin-top:10px;gap:10px;
   overflow:hidden;max-height:40px;transition:max-height .35s var(--ease),margin-top .35s var(--ease),opacity .3s}
-.demo.done .pill .bar{max-height:0;margin-top:0;opacity:0}
-.demo.done .pill{padding:10px 14px}
-.demo.done .pill .ph::after{content:" +";color:var(--primary);font-weight:600}
+.product-preview.done .pill .bar{max-height:0;margin-top:0;opacity:0}
+.product-preview.done .pill{padding:10px 14px}
+.product-preview.done .pill .ph::after{content:" +";color:var(--primary);font-weight:600}
 .pill{transition:padding .35s var(--ease)}
 .pill .left{display:flex;align-items:center;gap:8px;min-width:0}
 .pill .mk{opacity:.4;flex:none}
@@ -633,7 +633,7 @@ section{padding-block:var(--band)}
 @media (max-width:700px){.vs-caps{grid-template-columns:1fr;gap:var(--s2)}.vs-cap.smk{text-align:left}}
 
 /* pricing */
-.plans{margin-top:var(--s12);display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:var(--s5);max-width:920px;margin-inline:auto}
+.plans{margin-top:var(--s12);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s5);max-width:1180px;margin-inline:auto}
 .plan{display:flex;flex-direction:column;padding:var(--s8);background:var(--surface);border:1px solid var(--border);border-radius:var(--r-xl)}
 .plan.hot{border-color:var(--wash-line);box-shadow:0 0 0 3px var(--wash),var(--sh-md)}
 .plan-tag{display:inline-block;align-self:flex-start;margin-bottom:var(--s4);padding:4px 11px;border-radius:var(--r-pill);font-size:10.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
@@ -653,6 +653,25 @@ section{padding-block:var(--band)}
 input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:6px;border-radius:var(--r-pill);background:var(--surface2);cursor:pointer}
 input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:24px;height:24px;border-radius:50%;background:#fff;border:2px solid var(--primary);box-shadow:var(--sh-md);cursor:grab}
 input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:#fff;border:2px solid var(--primary);cursor:grab}
+
+/* one-search trial dialog */
+.btn[disabled]{opacity:.5;cursor:not-allowed;box-shadow:none;transform:none}
+.btn[disabled]:hover{transform:none}
+.trial-dialog{width:min(560px,calc(100% - 32px));max-width:none;padding:0;border:1px solid var(--border);border-radius:var(--r-xl);background:var(--surface);color:var(--content);box-shadow:0 28px 90px rgba(12,24,22,.28)}
+.trial-dialog::backdrop{background:rgba(15,24,22,.62);backdrop-filter:blur(6px)}
+.trial-dialog-in{position:relative;padding:var(--s10)}
+.trial-close{position:absolute;top:var(--s4);right:var(--s4);display:grid;place-items:center;width:36px;height:36px;border:1px solid var(--border);border-radius:50%;background:var(--surface);color:var(--muted);font-size:22px;line-height:1;cursor:pointer}
+.trial-dialog h2{max-width:12ch;font-size:var(--t-h2)}
+.trial-dialog .lede{font-size:var(--t-base)}
+.trial-callout{margin-top:var(--s6);padding:var(--s5);border:1px solid var(--wash-line);border-radius:var(--r-lg);background:var(--wash)}
+.trial-callout strong{display:block;font-family:Parkinsans,sans-serif;font-size:var(--t-base)}
+.trial-callout span{display:block;margin-top:var(--s2);font-size:var(--t-sm);color:var(--muted)}
+.trial-note{margin-top:var(--s5);font-size:var(--t-sm);color:var(--muted)}
+.trial-actions{display:flex;flex-wrap:wrap;gap:var(--s3);margin-top:var(--s8)}
+.trial-actions form{display:contents}
+.trial-dev,.handoff-status{margin-top:var(--s4);font-size:11px;color:var(--muted)}
+.handoff-status{text-align:center}
+@media (max-width:640px){.trial-dialog-in{padding:var(--s8) var(--s5)}.trial-actions .btn{width:100%}}
 
 /* faq */
 .faq{margin-top:var(--s12);display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 var(--s12);max-width:1000px;margin-inline:auto}
@@ -686,7 +705,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding-bloc
 
 /* ----------------------------------------------------------- responsive -- */
 @media (max-width:1000px){
-  .demo-deck{grid-template-columns:1fr;max-width:400px;margin-inline:auto}
+  .product-preview-deck{grid-template-columns:1fr;max-width:400px;margin-inline:auto}
   .frag-flow{grid-template-columns:1fr;gap:var(--s5)}
   .flow-arrow{transform:rotate(90deg);justify-self:center}
   .how-grid{grid-template-columns:1fr;max-width:480px;margin-inline:auto}
@@ -711,7 +730,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding-bloc
   .mcell.wide{grid-column:span 1}
   .lenses{grid-template-columns:1fr}
   .rep-actions{flex-wrap:wrap}
-  .demo-body{padding:16px}
+  .product-preview-body{padding:16px}
   .cmp-table th,.cmp-table td{padding:7px 8px;font-size:12px}
 }
 @media (prefers-reduced-motion:reduce){
@@ -721,7 +740,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding-bloc
 }
 @media print{
   .nav,.hero-actions,.final,.skip{display:none}
-  .demo,.window,.gcard,.plan{box-shadow:none}
+  .product-preview,.window,.gcard,.plan{box-shadow:none}
 }
 </style>
 </head>
@@ -742,9 +761,8 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding-bloc
       <a href="#pricing">Pricing</a>
     </div>
     <div class="nav-cta">
-      <!-- SWAP-POINT: GitHub repo URL -->
-      <a class="btn btn-ghost btn-sm" href="https://github.com/squarepegng/stratemark" target="_blank" rel="noopener noreferrer">GitHub</a>
-      <a class="btn btn-primary btn-sm" href="demo.html" target="_blank" rel="noopener noreferrer">Research a market</a>
+      <a class="btn btn-ghost btn-sm" href="#pricing">Download</a>
+      <button class="btn btn-primary btn-sm js-trial-trigger" type="button">Try Now</button>
     </div>
   </div>
 </nav>
@@ -764,35 +782,35 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding-bloc
       <strong>explore, compare, investigate and turn into a report</strong>.
     </p>
     <div class="hero-actions">
-      <a class="btn btn-primary" href="demo.html" target="_blank" rel="noopener noreferrer">Research a market</a>
-      <a class="btn btn-ghost" href="demo.html" target="_blank" rel="noopener noreferrer">See an example</a>
+      <button class="btn btn-primary js-trial-trigger" type="button">Try Now</button>
+      <a class="btn btn-ghost" href="#pricing">Download</a>
     </div>
-    <p class="hero-note">Runs on your own Gemini key · research stays on your machine</p>
+    <p class="hero-note">One complete market search free · choose any market, big or small</p>
 
     <!-- question → research → deck, in one window -->
     <div class="stage" data-r>
-      <div class="demo" id="demo" aria-label="The Stratemark app researching the frontier AI market and returning a deck of company profiles.">
-        <div class="demo-head">
+      <div class="product-preview" id="product-preview" aria-label="The Stratemark app researching the frontier AI market and returning a deck of company profiles.">
+        <div class="product-preview-head">
           <span class="brand-mini"><svg width="16" height="16" aria-hidden="true" width='136' height='136' viewBox='0 0 136 136' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M68.3262 23.6562C69.1088 23.6525 69.8888 23.6628 70.3213 23.6641L77.6377 23.6914C80.4851 23.7026 92.1595 24.0311 96.0928 24.1436C96.6449 24.1593 97.0265 24.4853 97.0977 24.8896C97.2606 25.8172 97.2414 26.9168 96.6064 27.6807C85.125 41.4929 73.4071 55.0896 61.8076 68.8193C61.3698 69.3375 60.4883 70.1341 59.5273 70.9443C58.5875 71.7367 57.6124 72.5084 57.001 72.9814C53.6044 75.3205 49.17 77.1344 45.1133 77.6426C44.1311 77.7655 40.8278 77.9804 37.6055 78.0332C35.9967 78.0595 34.4261 78.0453 33.1885 77.9609C32.5684 77.9187 32.048 77.859 31.6543 77.7832C31.4574 77.7453 31.305 77.7057 31.1943 77.667C31.0747 77.6251 31.0442 77.5987 31.0557 77.6084C31.0256 77.583 30.9368 77.4479 30.8652 77.1074C30.8011 76.8023 30.7764 76.4697 30.7559 76.1953C30.5418 73.3239 30.7499 70.4213 30.7373 67.4414C30.7098 60.9478 30.9798 55.6007 32.3477 50.6172C33.7111 45.6499 36.1757 41.0096 40.5898 35.9609C46.9688 28.665 56.8041 24.4054 66.4189 23.7295L66.4404 23.7285L66.4629 23.7256C66.7987 23.679 67.528 23.6601 68.3262 23.6562Z' fill='url(#paint0_linear_2140_16844)' stroke='#18BFB2' stroke-width='1.31864'/><path d='M67.0801 111.562C66.2974 111.566 65.5174 111.556 65.085 111.555L57.7686 111.527C54.9211 111.516 43.2467 111.188 39.3135 111.075C38.7613 111.059 38.3798 110.733 38.3086 110.329C38.1456 109.402 38.1649 108.302 38.7998 107.538C50.2812 93.7259 61.9991 80.1291 73.5986 66.3994C74.0364 65.8812 74.9179 65.0846 75.8789 64.2744C76.8187 63.482 77.7939 62.7103 78.4053 62.2373C81.8018 59.8983 86.2362 58.0843 90.293 57.5762C91.2752 57.4533 94.5785 57.2383 97.8008 57.1855C99.4095 57.1592 100.98 57.1734 102.218 57.2578C102.838 57.3001 103.358 57.3598 103.752 57.4355C103.949 57.4735 104.101 57.513 104.212 57.5518C104.332 57.5936 104.362 57.62 104.351 57.6104C104.381 57.6358 104.469 57.7708 104.541 58.1113C104.605 58.4164 104.63 58.749 104.65 59.0234C104.864 61.8948 104.656 64.7974 104.669 67.7773C104.696 74.2709 104.426 79.6181 103.059 84.6016C101.695 89.5689 99.2306 94.2092 94.8164 99.2578C88.4374 106.554 78.6021 110.813 68.9873 111.489L68.9658 111.49L68.9434 111.493C68.6075 111.54 67.8783 111.559 67.0801 111.562Z' fill='url(#paint1_linear_2140_16844)' stroke='#18BFB2' stroke-width='1.31864'/><defs><linearGradient id='paint0_linear_2140_16844' x1='66.7762' y1='38.5006' x2='65.3996' y2='78.7549' gradientUnits='userSpaceOnUse'><stop stop-color='#0F766E'/><stop offset='1' stop-color='#1CDCCD'/></linearGradient><linearGradient id='paint1_linear_2140_16844' x1='68.6301' y1='96.7181' x2='70.0067' y2='56.4639' gradientUnits='userSpaceOnUse'><stop stop-color='#0F766E'/><stop offset='1' stop-color='#1CDCCD'/></linearGradient></defs></svg> Stratemark</span>
         </div>
-        <div class="demo-body">
+        <div class="product-preview-body">
           <div class="q">
             <div class="t">2:47 PM</div>
-            <span class="bub" id="demo-q">Frontier AI labs — Global</span>
+            <span class="bub" id="product-preview-q">Frontier AI labs — Global</span>
           </div>
-          <div class="research glow" id="demo-research">
+          <div class="research glow" id="product-preview-research">
             <div class="phase">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-              <span id="demo-phase">Discovering companies…</span>
+              <span id="product-preview-phase">Discovering companies…</span>
             </div>
-            <div class="steps" id="demo-steps">
+            <div class="steps" id="product-preview-steps">
               <div class="row"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Finding companies in scope</div>
               <div class="row"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Verifying company profiles</div>
               <div class="row"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Checking revenue and valuation signals</div>
               <div class="row"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Scoring maturity tiers</div>
             </div>
           </div>
-          <div class="demo-deck" id="demo-deck">
+          <div class="product-preview-deck" id="product-preview-deck">
             <article class="gcard dpop">
               <span class="open-aff" aria-hidden="true">Open company →</span>
               <div class="gc-top">
@@ -840,7 +858,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding-bloc
             </article>
           </div>
         </div>
-        <div class="demo-foot">
+        <div class="product-preview-foot">
           <div class="pill">
             <div class="ph">Describe a market…</div>
             <div class="bar">
@@ -1372,38 +1390,55 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding-bloc
 <section id="pricing" style="background:var(--surface);border-block:1px solid var(--border)">
   <div class="wrap">
     <div class="center">
-      <p class="kicker" data-r>Pricing</p>
-      <h2 class="h2" data-r>Start researching for free.</h2>
-      <p class="lede" data-r>Research runs on <strong>your own Gemini key</strong> — we never see it. Nothing here is a subscription.</p>
+      <p class="kicker" data-r>Choose your path</p>
+      <h2 class="h2" data-r>Start with one market. Continue your way.</h2>
+      <p class="lede" data-r>Try one complete market search free. Then run Stratemark yourself, download the desktop app, or let us handle the API work.</p>
     </div>
     <div class="plans">
-      <div class="plan hot" data-r>
-        <span class="plan-tag tag-brand">Free</span>
-        <h3>Demo &amp; open source</h3>
-        <p class="plan-price"><span>$0</span> <small>forever open</small></p>
-        <ul class="plan-list">
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Explore real sample decks in the browser — no signup</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Full source on GitHub, free to clone and run</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Bring your own Gemini key; research stays on your machine</li>
-        </ul>
-        <a class="btn btn-primary" href="demo.html" target="_blank" rel="noopener noreferrer">Research a market</a>
-      </div>
       <div class="plan" data-r>
-        <span class="plan-tag tag-quiet">Prefer not to build it?</span>
-        <h3>Easy install</h3>
-        <p class="plan-price"><span>$<span id="pay-out">10</span></span> <small>one-time · you choose</small></p>
+        <span class="plan-tag tag-quiet">Open source</span>
+        <h3>Build it yourself</h3>
+        <p class="plan-price"><span>$0</span> <small>free and open</small></p>
+        <ul class="plan-list">
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Full source, free to clone and run</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Bring your own Gemini key</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Your research stays local to your machine</li>
+        </ul>
+        <!-- SWAP-POINT: canonical GitHub repository URL after account migration -->
+        <button class="btn btn-ghost" type="button" disabled aria-describedby="github-status">View on GitHub</button>
+        <p class="handoff-status" id="github-status">Awaiting the canonical repository migration.</p>
+      </div>
+      <div class="plan hot" data-r>
+        <span class="plan-tag tag-brand">Easy install</span>
+        <h3>Download the desktop app</h3>
+        <p class="plan-price"><span>$<span id="pay-out">29</span></span> <small>one-time · you choose</small></p>
         <div class="slider-row">
-          <input type="range" id="pay-slider" min="1" max="100" value="10" step="1"
+          <input type="range" id="pay-slider" min="1" max="100" value="29" step="1"
                  aria-label="Choose your one-time price, from one to one hundred dollars" />
           <div class="slider-scale"><span>$1</span><span>$100</span></div>
         </div>
         <ul class="plan-list">
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Packaged installer for Windows &amp; macOS</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Pay what you want, once</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Signed installer for Windows &amp; macOS</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Google sign-in connects your purchase and account</li>
         </ul>
-        <p class="plan-note"><strong>Still bring your own key.</strong> This is packaging and setup — not API credits, not a hosted key, not a subscription.</p>
-        <!-- SWAP-POINT: Lemon Squeezy checkout URL -->
-        <a class="btn btn-ghost" id="pay-btn" href="https://github.com/squarepegng/stratemark/releases" target="_blank" rel="noopener noreferrer">Get easy install · $10</a>
+        <p class="plan-note"><strong>Bring your own Gemini key.</strong> You are paying for the easiest setup, the signed desktop app, and hosted access — not API credits.</p>
+        <!-- SWAP-POINT: Lemon Squeezy easy-installer checkout URL -->
+        <button class="btn btn-primary" id="pay-btn" type="button" disabled aria-describedby="installer-status">Download · $29</button>
+        <p class="handoff-status" id="installer-status">Checkout connects when the signed installer is ready.</p>
+      </div>
+      <div class="plan" data-r>
+        <span class="plan-tag tag-quiet">Managed</span>
+        <h3>Subscription</h3>
+        <p class="plan-price"><span>$19</span> <small>starting per month</small></p>
+        <ul class="plan-list">
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Starter: 12 decks for $19 a month</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Pro: 35 decks for $49 a month</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Max: 70 decks for $99 a month</li>
+        </ul>
+        <p class="plan-note"><strong>We handle the API setup and usage.</strong> Includes the hosted web app, desktop access, and a clear monthly deck allowance.</p>
+        <!-- SWAP-POINT: Lemon Squeezy subscription selection URL -->
+        <button class="btn btn-ghost" type="button" disabled aria-describedby="subscription-status">View plans</button>
+        <p class="handoff-status" id="subscription-status">Managed checkout connects after deployment.</p>
       </div>
     </div>
   </div>
@@ -1424,7 +1459,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding-bloc
         </details>
         <details>
           <summary>How does Stratemark research a market?</summary>
-          <p>It runs live, cited Google research on your own Gemini key — finding companies, verifying profiles, checking revenue and valuation signals, and scoring maturity tiers. You can watch each step complete.</p>
+          <p>It runs live, cited Google research — finding companies, verifying profiles, checking revenue and valuation signals, and scoring maturity tiers. The free trial and managed plans include usage; open-source and easy-install users can bring their own Gemini key.</p>
         </details>
         <details>
           <summary>Where does the information come from?</summary>
@@ -1442,7 +1477,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding-bloc
       <div>
         <details>
           <summary>What is a deck?</summary>
-          <p>Your market, organized: a structured set of company profiles plus market context, with consistent metrics so companies can actually be compared. It lives on your machine as a file you own.</p>
+          <p>Your market, organized: a structured set of company profiles plus market context, with consistent metrics so companies can actually be compared. Local users keep it on their machine; managed accounts can sync it securely to their account.</p>
         </details>
         <details>
           <summary>Can I compare companies?</summary>
@@ -1472,11 +1507,11 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding-bloc
 <!-- =============================================== 15 · FINAL CTA (ink) === -->
 <section class="final on-ink">
   <div class="wrap">
-    <h2 data-r>Start with a question.</h2>
-    <p class="lede" data-r>Research a market, understand the companies inside it, and turn what you learn into intelligence you can use.</p>
+    <h2 data-r>Your market. One search away.</h2>
+    <p class="lede" data-r>Choose any market that matters to you, big or small. Your free trial builds one complete deck from live, cited research.</p>
     <div class="final-actions" data-r>
-      <a class="btn btn-primary" href="demo.html" target="_blank" rel="noopener noreferrer">Research a market</a>
-      <a class="btn btn-ghost" href="demo.html" target="_blank" rel="noopener noreferrer">See an example</a>
+      <button class="btn btn-primary js-trial-trigger" type="button">Try Now</button>
+      <a class="btn btn-ghost" href="#pricing">Download</a>
     </div>
   </div>
 </section>
@@ -1495,7 +1530,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding-bloc
       <a href="#metrics-sec">Metrics</a>
       <a href="#people">Who it’s for</a>
       <a href="#pricing">Pricing</a>
-      <a href="https://github.com/squarepegng/stratemark" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <span title="Canonical repository link will be restored after the account migration is complete.">GitHub coming soon</span>
       <a href="privacy.html">Privacy</a>
       <a href="terms.html">Terms</a>
       <a href="refunds.html">Refunds</a>
@@ -1508,6 +1543,26 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding-bloc
   </div>
 </footer>
 
+<dialog class="trial-dialog" id="trial-dialog" aria-labelledby="trial-title" aria-describedby="trial-description">
+  <div class="trial-dialog-in">
+    <form method="dialog"><button class="trial-close" value="cancel" aria-label="Close free trial dialog">×</button></form>
+    <p class="kicker">Your free trial</p>
+    <h2 id="trial-title">One market. One complete search.</h2>
+    <p class="lede" id="trial-description">Choose any market that interests you — big or small. This is not a pre-built example. Stratemark will research your market and build your deck from live, cited sources.</p>
+    <div class="trial-callout">
+      <strong>Your trial includes one complete market search.</strong>
+      <span>Once your deck begins building, this search is reserved for you. If something goes wrong, you can retry without losing your trial.</span>
+    </div>
+    <p class="trial-note">Google sign-in will connect the trial to your account. When the deck is complete, you can explore it before choosing open source, the easy desktop install, or a managed subscription.</p>
+    <div class="trial-actions">
+      <!-- SWAP-POINT: hosted web app new-research URL -->
+      <button class="btn btn-primary" type="button" disabled aria-describedby="trial-destination-status">Continue to research</button>
+      <form method="dialog"><button class="btn btn-ghost" value="cancel">Not yet</button></form>
+    </div>
+    <p class="trial-dev" id="trial-destination-status">Prototype handoff: connect the hosted web app URL before production.</p>
+  </div>
+</dialog>
+
 <script>
 document.documentElement.classList.add('js');
 
@@ -1515,12 +1570,12 @@ document.documentElement.classList.add('js');
 (function(){
   var n=document.getElementById('nav'); if(!n) return;
   var edge=document.querySelector('.hero .dissolve');
-  var demo=document.querySelector('.demo');
+  var preview=document.querySelector('.product-preview');
   var navH=parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h'),10)||70;
   var f=function(){
     var y=Infinity;
     if(edge) y=Math.min(y,edge.getBoundingClientRect().top);
-    if(demo) y=Math.min(y,demo.getBoundingClientRect().top);
+    if(preview) y=Math.min(y,preview.getBoundingClientRect().top);
     n.classList.toggle('stuck', y<=navH);
   };
   addEventListener('scroll',f,{passive:true}); f();
@@ -1536,12 +1591,12 @@ document.documentElement.classList.add('js');
   els.forEach(function(e){io.observe(e)});
 })();
 
-/* hero demo: phases cycle, steps land, deck populates */
+/* hero product preview: phases cycle, steps land, deck populates */
 (function(){
-  var demo=document.getElementById('demo'); if(!demo) return;
-  var phase=document.getElementById('demo-phase');
-  var research=document.getElementById('demo-research');
-  var cards=[].slice.call(demo.querySelectorAll('.dpop'));
+  var preview=document.getElementById('product-preview'); if(!preview) return;
+  var phase=document.getElementById('product-preview-phase');
+  var research=document.getElementById('product-preview-research');
+  var cards=[].slice.call(preview.querySelectorAll('.dpop'));
   var PHASES=['Brainstorming…','Scanning the market…','Discovering companies…','Analyzing metrics…','Scoring tiers…'];
   var reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
   var deck=function(){
@@ -1550,7 +1605,7 @@ document.documentElement.classList.add('js');
     var icon=research.querySelector('.phase svg'); if(icon) icon.style.animation='none';
     cards.forEach(function(c,i){setTimeout(function(){c.classList.add('in')},reduced?0:160*i)});
     /* the input pill collapses to a compact, fully visible state */
-    setTimeout(function(){demo.classList.add('done')},reduced?0:cards.length*160+300);
+    setTimeout(function(){preview.classList.add('done')},reduced?0:cards.length*160+300);
   };
   if(reduced||!('IntersectionObserver' in window)){deck();return}
   var started=false;
@@ -1564,7 +1619,7 @@ document.documentElement.classList.add('js');
       else{clearInterval(t);setTimeout(deck,500)}
     },1400);
   },{threshold:.2});
-  io.observe(demo);
+  io.observe(preview);
 })();
 
 /* problem fragments drift in */
@@ -1648,13 +1703,24 @@ document.documentElement.classList.add('js');
   io.observe(chips[0]);
 })();
 
+/* one-search trial dialog */
+(function(){
+  var d=document.getElementById('trial-dialog'); if(!d||typeof d.showModal!=='function') return;
+  document.querySelectorAll('.js-trial-trigger').forEach(function(b){
+    b.addEventListener('click',function(){d.showModal()});
+  });
+  d.addEventListener('click',function(e){
+    if(e.target===d){d.close('cancel')}
+  });
+})();
+
 /* pay what you want */
 (function(){
   var s=document.getElementById('pay-slider'); if(!s) return;
   var o=document.getElementById('pay-out'),b=document.getElementById('pay-btn');
   var p=function(){
     var v=parseInt(s.value,10),pc=((v-s.min)/(s.max-s.min))*100;
-    o.textContent=v; b.textContent='Get easy install · $'+v;
+    o.textContent=v; b.textContent='Download · $'+v;
     s.style.background='linear-gradient(90deg,var(--primary) '+pc+'%,var(--surface2) '+pc+'%)';
   };
   s.addEventListener('input',p); p();

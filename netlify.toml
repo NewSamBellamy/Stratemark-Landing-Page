@@ -9,7 +9,7 @@
 #   (index.html and demo.html). They are allowlisted by SHA-256 hash —
 #   no 'unsafe-inline', no 'unsafe-eval'. If either inline block is ever
 #   edited, recompute its hash, e.g.:
-#     node -e "const c=require('crypto'),f=require('fs');const h=f.readFileSync('index.html','utf8');const body=h.slice(h.indexOf('<script>')+8,h.indexOf('</script>'));console.log('sha256-'+c.createHash('sha256').update(body).digest('base64'))"
+#     node -e "const c=require('crypto'),f=require('fs'),h=f.readFileSync('index.html','utf8'),m=h.match(/<script(?:\\s[^>]*)?>([\\s\\S]*?)<\\/script>/i);console.log('sha256-'+c.createHash('sha256').update(m[1]).digest('base64'))"
 # - Netlify post-processing (pretty URLs) rewrites <a> attributes at deploy
 #   time but does not touch inline script/style bodies, so the hashes below
 #   match the served bytes.
@@ -32,7 +32,7 @@
 [[headers]]
   for = "/*"
   [headers.values]
-    Content-Security-Policy = "default-src 'self'; script-src 'sha256-7AEUFiiD/PJ3lR9Dn5mVnuzGjtJqNk+o4j5aGw8L1Gc=' 'sha256-b3uY4/58xtVw5QnprgTAfhIGFJTy07dv9EaaUUK3rB0='; style-src 'self' 'sha256-rYP2pBMRhzyBlju42zw5U6dbHAF+QHaV6z6XyEXAqWQ=' 'sha256-dONZJ9wTPZMPWYeWbLg0AQiZ+kbLhLNbOdkfC10iqdQ=' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://generativelanguage.googleapis.com https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://firestore.googleapis.com https://firebase.googleapis.com https://*.run.app; media-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests"
+    Content-Security-Policy = "default-src 'self'; script-src 'sha256-Z8gtAL6DmcaytxscNgoDkHaGMdu3Ja2wbYk6kD4Z2+I=' 'sha256-b3uY4/58xtVw5QnprgTAfhIGFJTy07dv9EaaUUK3rB0='; script-src-attr 'none'; style-src 'self' 'sha256-p2UPmiLIJxtbY8uxOE5TGtmNoiWjqYajHc2uHjGXpuw=' 'sha256-dONZJ9wTPZMPWYeWbLg0AQiZ+kbLhLNbOdkfC10iqdQ=' https://fonts.googleapis.com; style-src-attr 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://generativelanguage.googleapis.com https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://firestore.googleapis.com https://firebase.googleapis.com https://*.run.app; media-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests"
     X-Content-Type-Options = "nosniff"
     X-Frame-Options = "DENY"
     Referrer-Policy = "strict-origin-when-cross-origin"

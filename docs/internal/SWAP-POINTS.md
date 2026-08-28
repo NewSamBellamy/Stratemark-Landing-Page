@@ -6,20 +6,24 @@ placeholder chips on legal pages.
 
 ## Required swaps
 
-1. **GitHub repository URL — DONE (12 Aug)**
-   All links point at `https://github.com/squarepegng/stratemark` (nav, hero,
-   pricing, footer). Note: that repo currently has **no releases**, so the
-   "Get easy install" button (→ `/releases`) lands on an empty page until
-   Tobi's Lemon Squeezy checkout or a first GitHub release exists. See item 3.
+1. **Hosted web-app new-research URL — OPEN**
+   The `Try Now` buttons open the one-search trial dialog. Its primary action
+   is intentionally disabled until Maruf supplies the permanent hosted app
+   URL after Firebase Hosting and Cloud Run are deployed. The product must
+   enforce one complete market-search job per Google-authenticated account;
+   see `docs/internal/FUNNEL-HANDOFF.md`.
 
-2. **Demo URL — DONE (16 Aug, `f1f9c1d`)**
-   All CTAs point at native `demo.html` in this repo (served as `/demo`).
+2. **Canonical GitHub repository URL — OPEN**
+   The stale `squarepegng/stratemark` destination has been removed from this
+   prototype. The open-source button is intentionally disabled until Shannon
+   chooses Maruf's or Tobi's account and engineering imports the repo there.
+   Import, do not fork, so the hackathon commit history is preserved.
 
-3. **Lemon Squeezy checkout URL — OPEN**
-   Easy-install primary button currently points at the GitHub releases
-   placeholder. Swap to the Lemon Squeezy checkout URL / overlay once the
-   store is approved (Tobi owns the store; Maruf wires the entitlement
-   webhook — see `docs/internal/BACKEND-HANDOFF.md`).
+3. **Lemon Squeezy destinations — OPEN**
+   Two destinations are required: the one-time easy-installer checkout and the
+   Starter/Pro/Max subscription chooser. Both controls are intentionally
+   disabled until Tobi provides store/variant details and Maruf wires account
+   entitlements. The easy-install slider must pass the selected $1–$100 amount.
 
 4. **Square Peg NG legal details — OPEN**
    Yellow chips (`class="ph"`) on privacy / terms / refunds / contact pages:
